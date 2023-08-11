@@ -17,14 +17,14 @@ class UserPresenter
     public function name()
     {
         if ($this->model->id === auth()->id()) {
-            return 'You';
+            return '';
         }
         return $this->model->name;
     }
 
     public function __get($property)
     {
-        if(method_exists($this, $property)) {
+        if (method_exists($this, $property)) {
             return $this->{$property}();
         }
         return null;
@@ -32,7 +32,7 @@ class UserPresenter
 
     public function avatar()
     {
-        return 'https://www.gravatar.com/avatar/'.md5($this->model->email).'?s=80&d=mm';
+        return 'https://www.gravatar.com/avatar/' . md5($this->model->email) . '?s=80&d=mm';
     }
 
 }
